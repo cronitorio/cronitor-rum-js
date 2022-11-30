@@ -12,7 +12,7 @@
     "monitoring",
     "performance"
   ],
-  "author": "Anthony N. Simon <anthony@cronitor.com>",
+  "author": "Developers <support@cronitor.com>",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
