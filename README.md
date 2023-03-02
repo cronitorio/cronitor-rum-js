@@ -41,7 +41,24 @@ Cronitor.track('Pageview');
 Cronitor.track('NewsletterSignup');
 ```
 
+You can set any configuration options as follows:
+
+```javascript
+import * as Cronitor from '@cronitorio/cronitor-rum-js';
+
+// Load the Cronitor tracker once in your app
+Cronitor.load('YOUR_CLIENT_KEY', {
+    debug: true,
+    environment: "staging",
+    includeURLQueryParams: ["tab", "pageNum"]
+});
+```
+
 ## Changelog
+
+### 0.2.0
+
+- Update types.
 
 ### 0.1.0
 
@@ -49,11 +66,11 @@ Cronitor.track('NewsletterSignup');
 
 ## Security Disclosure
 
-If you discover any issue regarding security, please disclose the information responsibly by sending us an email at [support@cronitor.io](mailto:support@cronitor.io). Do NOT create a Issue on the GitHub repo.
+If you discover any issue regarding security, please disclose the information responsibly by emailing us at [support@cronitor.io](mailto:support@cronitor.io). Do NOT create a Issue on the GitHub repo.
 
 ## Contributing
 
-Please check for any existing issues before openning a new Issue. If you'd like to work on something, please open a new Issue describing what you'd like to do before submitting a Pull Request.
+Please check for any existing issues before opening a new Issue. If you'd like to work on something, please open a new Issue describing what you'd like to do before submitting a Pull Request.
 
 ## License
 

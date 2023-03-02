@@ -46,6 +46,20 @@ export interface CronitorRUMConfig {
    * Whether or not the URL fragment (hash part) should be reported. Default: false.
    */
   includeURLFragment?: boolean;
+  /**
+   * Selectively include URL query params in the event data. Default: empty, no query params are collected.
+   * Example:
+   *    includeURLQueryParams: ["tab", "pageNum"]
+   */
+  includeURLQueryParams?: string[];
+  /**
+   * Whether the SDK should send Error events automatically.
+   */
+  autoTrackErrors?: boolean;
+  /**
+   * Whether the SDK should send Core Web Vital events automatically.
+   */
+  autoTrackCoreWebVitals?: boolean;
 }
 
 export interface CronitorRUMEvent {
