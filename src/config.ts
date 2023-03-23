@@ -34,10 +34,6 @@ export interface CronitorRUMConfig {
    */
   ingestionHost?: string;
   /**
-   * Override the RUM script URL which is used for loading.
-   */
-  scriptSrc?: string;
-  /**
    * Honor the Do-Not-Track (DNT) setting on the user's browser. Default: false.
    */
   honorDNT?: boolean;
