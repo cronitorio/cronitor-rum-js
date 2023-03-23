@@ -15,20 +15,21 @@
   "author": "Developers <support@cronitor.com>",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/*.d.ts",
   "files": [
     "dist/**/*"
   ],
   "scripts": {
-    "build": "yarn run build:targets && yarn run build:types",
-    "build:targets": "node build.js",
-    "build:types": "tsc --emitDeclarationOnly --declaration --project tsconfig.json",
+    "build": "yarn run build:target && yarn run build:types",
+    "build:target": "node esbuild.js",
+    "build:types": "tsc --project tsconfig.json",
     "fmt": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json"
   },
   "devDependencies": {
     "browserslist": "^4.21.5",
     "esbuild": "^0.17.12",
+    "esbuild-node-externals": "^1.6.0",
     "esbuild-plugin-browserslist": "^0.7.0",
     "prettier": "^2.2.1",
     "tslint": "^6.1.3",
