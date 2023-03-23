@@ -91,11 +91,17 @@ export interface CronitorRUMEvent {
   web_vital_cls?: number;
   web_vital_fid?: number;
   web_vital_lcp?: number;
+  error_type?: string;
+  message?: string;
+  lineno?: number;
+  colno?: number;
+  filename?: string;
 }
 
 interface CronitorRUMInterpreter {
   (command: 'track', eventName: string, dimensionOverrides?: any): void;
-  (command: 'config', config: CronitorRUMConfig): void;
+  (command: 'config', conf: CronitorRUMConfig): void;
+  (command: 'captureError', event: ErrorEvent, dimensionOverrides?: any): void;
   q?: any[];
 }
 
@@ -105,11 +111,12 @@ declare global {
   }
 }
 
-const interpret: CronitorRUMInterpreter = function (command: any, arg1?: any, arg2?: any): void {
+const interpret: CronitorRUMInterpreter = (command: any, arg1?: any, arg2?: any) => {
   // If real script already loaded (it's async), keep it
   // Otherwise inject temporary queue to hold events while it loads
   window.cronitor =
     window.cronitor ||
+    // tslint:disable-next-line:only-arrow-functions
     function () {
       (window.cronitor.q = window.cronitor.q || []).push(arguments);
     };
@@ -121,10 +128,10 @@ const interpret: CronitorRUMInterpreter = function (command: any, arg1?: any, ar
   }
 };
 
-export const load = (clientKey: string, config?: CronitorRUMConfig): void => {
+export const load = (clientKey: string, conf?: CronitorRUMConfig): void => {
   const tracker = document.createElement('script');
   tracker.async = true;
-  tracker.src = config?.scriptSrc ?? 'https://rum.cronitor.io/script.js';
+  tracker.src = conf?.scriptSrc ?? 'https://rum.cronitor.io/script.js';
   document.head.appendChild(tracker);
 
   interpret('config', {
@@ -136,10 +143,14 @@ export const load = (clientKey: string, config?: CronitorRUMConfig): void => {
   });
 };
 
-export const config = (config: CronitorRUMConfig): void => {
-  interpret('config', config);
+export const config = (conf: CronitorRUMConfig): void => {
+  interpret('config', conf);
 };
 
 export const track = (eventName: string, dimensionOverrides?: any): void => {
   interpret('track', eventName, dimensionOverrides);
+};
+
+export const captureError = (event: ErrorEvent, dimensionOverrides?: any): void => {
+  interpret('captureError', event, dimensionOverrides);
 };
