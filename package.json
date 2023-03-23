@@ -20,11 +20,16 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "tsc --declaration",
+    "build": "yarn run build:targets && yarn run build:types",
+    "build:targets": "node build.js",
+    "build:types": "tsc --emitDeclarationOnly --declaration --project tsconfig.json",
     "fmt": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json"
   },
   "devDependencies": {
+    "browserslist": "^4.21.5",
+    "esbuild": "^0.17.12",
+    "esbuild-plugin-browserslist": "^0.7.0",
     "prettier": "^2.2.1",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
@@ -33,5 +38,8 @@
   "bugs": {
     "url": "https://github.com/cronitorio/cronitor-rum-js/issues"
   },
-  "homepage": "https://github.com/cronitorio/cronitor-rum-js#readme"
+  "homepage": "https://github.com/cronitorio/cronitor-rum-js#readme",
+  "dependencies": {
+    "web-vitals": "^3.3.0"
+  }
 }
