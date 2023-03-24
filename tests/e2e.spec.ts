@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.on('console', (message) => console.log(message.text()));
 });
 
-test('basic', async ({ page, userAgent }) => {
+test('basic sdk installation', async ({ page, userAgent }) => {
   const requestListener = page.waitForRequest((req) => req.url().indexOf('/api/rum/events') > -1, {
     timeout: 5000,
   });
@@ -27,7 +27,7 @@ test('basic', async ({ page, userAgent }) => {
   expect(request.postDataJSON().user_agent).toBe(userAgent);
 });
 
-test('misconfigured', async ({ page }) => {
+test('sdk misconfigured - skip event collection', async ({ page }) => {
   let requestWasMade = false;
   page.on('request', (req) => {
     if (req.url().includes('/api/rum/events')) {
@@ -48,7 +48,7 @@ test('misconfigured', async ({ page }) => {
   expect(requestWasMade).toBe(false);
 });
 
-test('disable autotrack', async ({ page }) => {
+test('disable autotrack - skip event collection', async ({ page }) => {
   let requestWasMade = false;
   page.on('request', (req) => {
     if (req.url().includes('/api/rum/events')) {
@@ -62,7 +62,7 @@ test('disable autotrack', async ({ page }) => {
   expect(requestWasMade).toBe(false);
 });
 
-test('core web vitals', async ({ page, browserName }) => {
+test('core web vitals - records first input delay', async ({ page, browserName }) => {
   // Skip this test on webkit
   if (browserName === 'webkit') {
     return;
@@ -88,7 +88,7 @@ test('core web vitals', async ({ page, browserName }) => {
   expect(typeof request.postDataJSON().web_vital_fid === 'number').toBe(true);
 });
 
-test('error tracking', async ({ page, browserName }) => {
+test('error tracking - listens for uncaught errors', async ({ page, browserName }) => {
   const requestListener = page.waitForRequest(
     (req) => {
       return req.url().indexOf('/api/rum/events') > -1 && req.postDataJSON().event_name === 'Error';
