@@ -80,7 +80,7 @@ export const shouldCollect = (payload: CronitorRUMEvent) => {
 
   if (!RUM_GLOBAL_CONFIG.debug) {
     if (RUM_GLOBAL_CONFIG.honorDNT && 'doNotTrack' in window.navigator && window.navigator.doNotTrack === '1') {
-      log("Honoring 'Do Not Track'");
+      log("Honoring 'Do Not Track'", undefined, true);
       return false;
     }
     if (
@@ -96,11 +96,11 @@ export const shouldCollect = (payload: CronitorRUMEvent) => {
     }
     // @ts-ignore
     if (window.document.visibilityState === 'prerender') {
-      log('Skipping event collection, document is pre-rendering');
+      log('Skipping event collection, document is pre-rendering', undefined, true);
       return false;
     }
     if (window.navigator.webdriver) {
-      log('Skipping event collection, navigation is automated');
+      log('Skipping event collection, navigation is automated', undefined, true);
       return false;
     }
   }
