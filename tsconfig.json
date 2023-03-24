@@ -1,8 +1,8 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    "module": "ES2015",
-    "target": "ES2015",
+    "target": "es5",
+    "module": "commonjs",
     "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
     "strict": true,
@@ -11,7 +11,8 @@
     "esModuleInterop": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
-//    "outFile": "dist/index.ts",
+//    "outFile": "dist/types.d.ts",
     "rootDir": "src"
-  }
+  },
+  "exclude": ["node_modules", "dist"]
 }
