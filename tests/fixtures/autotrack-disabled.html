@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cronitor RUM Test</title>
+    <script async src="http://localhost:8888/rumscript.js"></script>
+    <script>
+        window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+        cronitor('config', {
+          clientKey: 'YOUR_CLIENT_KEY',
+          ingestionHost: 'http://localhost:8888',
+          debug: true,
+          trackMode: 'off',
+          autoTrackCoreWebVitals: false,
+          autoTrackErrors: false,
+        });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

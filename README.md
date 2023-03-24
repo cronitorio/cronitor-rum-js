@@ -2,12 +2,6 @@
 
 A simple JavaScript library for [Cronitor Real User Monitoring](https://cronitor.io/real-user-monitoring).
 
-## Highlights
-
-- Just a thin wrapper around the Cronitor RUM analytics script.
-- Integrates with most JS frameworks.
-- Typed (Typescript).
-
 ## Quickstart
 
 ### Install
@@ -55,6 +49,10 @@ Cronitor.load('YOUR_CLIENT_KEY', {
 ```
 
 ## Changelog
+
+### 0.3.0
+
+- Open source analytics script.
 
 ### 0.2.0
 
