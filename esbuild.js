@@ -36,7 +36,7 @@ esbuild
     bundle: true,
     treeShaking: true,
     minify: true,
-    sourcemap: true,
+    sourcemap: false,
     color: true,
     target: 'node14',
     format: 'cjs',

@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.on('console', (message) => console.log(message.text()));
 });
 
-test('basic sdk installation', async ({ page, userAgent }) => {
+test('html sdk installation', async ({ page, userAgent }) => {
   const requestListener = page.waitForRequest((req) => req.url().indexOf('/api/rum/events') > -1, {
     timeout: 5000,
   });
