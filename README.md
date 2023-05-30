@@ -9,13 +9,13 @@ A simple JavaScript library for [Cronitor Real User Monitoring](https://cronitor
 Run the following command to install in your project:
 
 ```
-npm install @cronitorio/cronitor-rum-js
+npm install @cronitorio/cronitor-rum
 ```
 
 Or with yarn:
 
 ```
-yarn add @cronitorio/cronitor-rum-js
+yarn add @cronitorio/cronitor-rum
 ```
 
 ### Basic usage
@@ -23,7 +23,7 @@ yarn add @cronitorio/cronitor-rum-js
 You can now import, and use the client on your project.
 
 ```javascript
-import * as Cronitor from '@cronitorio/cronitor-rum-js';
+import * as Cronitor from '@cronitorio/cronitor-rum';
 
 // Load the Cronitor tracker once in your app
 Cronitor.load('YOUR_CLIENT_KEY');
@@ -38,7 +38,7 @@ Cronitor.track('NewsletterSignup');
 You can set any configuration options as follows:
 
 ```javascript
-import * as Cronitor from '@cronitorio/cronitor-rum-js';
+import * as Cronitor from '@cronitorio/cronitor-rum';
 
 // Load the Cronitor tracker once in your app
 Cronitor.load('YOUR_CLIENT_KEY', {

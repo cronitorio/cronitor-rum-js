@@ -1,7 +1,7 @@
 {
-  "name": "@cronitorio/cronitor-rum-js",
-  "version": "0.3.0",
-  "description": "Official cronitor client (browser)",
+  "name": "@cronitorio/cronitor-rum",
+  "version": "0.4.0",
+  "description": "Official Cronitor RUM client (browser)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronitorio/cronitor-rum-js.git"
