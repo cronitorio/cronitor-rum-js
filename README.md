@@ -50,6 +50,10 @@ Cronitor.load('YOUR_CLIENT_KEY', {
 
 ## Changelog
 
+### 0.4.0
+
+- Rename package.
+
 ### 0.3.0
 
 - Open source analytics script.
