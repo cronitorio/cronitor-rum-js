@@ -52,7 +52,7 @@ export const send = async (event: CronitorRUMEvent) => {
   const url = `${RUM_GLOBAL_CONFIG.ingestionHost}/api/rum/events`;
   const data = JSON.stringify(event);
   if (navigator.sendBeacon) {
-    navigator.sendBeacon(url, data);
+    navigator.sendBeacon.call(navigator, url, data);
   } else {
     await fetch(url, {
       body: data,
