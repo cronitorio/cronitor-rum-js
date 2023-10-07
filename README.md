@@ -50,6 +50,10 @@ Cronitor.load('YOUR_CLIENT_KEY', {
 
 ## Changelog
 
+### 0.4.1
+
+- Bug fix. Bind sendBeacon to navigator.
+
 ### 0.4.0
 
 - Rename package.
