@@ -83,6 +83,17 @@ export const config = (params: Partial<CronitorRUMConfig>) => {
 };
 
 export const load = (clientKey: string, conf?: CronitorRUMConfig): void => {
+  // Ensure the global cronitor object exists before config() runs.
+  // When loaded via NPM imports, window.cronitor won't have been pre-initialized
+  // by an inline script snippet (unlike the HTML script tag path).
+  if (typeof window !== 'undefined' && !window.cronitor) {
+    // @ts-ignore
+    window.cronitor = function () {
+      (window.cronitor.q = window.cronitor.q || []).push(arguments);
+    };
+    window.cronitor.q = [];
+  }
+
   config({
     clientKey,
     // Disable auto-track on the JS client. Most projects using this library need
