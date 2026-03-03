@@ -20,7 +20,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "yarn run build:target && yarn run build:types",
+    "build": "npm run build:target && npm run build:types",
     "build:target": "node esbuild.js",
     "build:types": "tsc --project tsconfig.json",
     "fmt": "prettier --write \"src/**/*.ts\"",
