@@ -60,6 +60,11 @@ https://yoursite.com?cronitor_rum_enable
 
 ## Changelog
 
+### 0.4.2
+
+- Fix crash when using NPM import with `trackMode: "history"` (#3).
+- Update CI to Node 18 and GitHub Actions v4.
+
 ### 0.4.1
 
 - Bug fix. Bind sendBeacon to navigator.
