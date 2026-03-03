@@ -48,6 +48,22 @@ Cronitor.load('YOUR_CLIENT_KEY', {
 });
 ```
 
+## Excluding Your Visits from Tracking
+
+To exclude your own visits from being tracked, append `?cronitor_rum_disable` to any page URL on your site:
+
+```
+https://yoursite.com?cronitor_rum_disable
+```
+
+This stores a flag in your browser's `localStorage` that prevents all subsequent tracking on that browser. The exclusion persists across sessions.
+
+To re-enable tracking, visit any page with `?cronitor_rum_enable`:
+
+```
+https://yoursite.com?cronitor_rum_enable
+```
+
 ## Changelog
 
 ### 0.4.1
