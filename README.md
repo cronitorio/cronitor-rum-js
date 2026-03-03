@@ -12,12 +12,6 @@ Run the following command to install in your project:
 npm install @cronitorio/cronitor-rum
 ```
 
-Or with yarn:
-
-```
-yarn add @cronitorio/cronitor-rum
-```
-
 ### Basic usage
 
 You can now import, and use the client on your project.
