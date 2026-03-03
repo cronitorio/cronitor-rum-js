@@ -8,7 +8,7 @@
     <script>
         // This mirrors the reported issue (#3): calling load() with trackMode: "history"
         // without pre-initializing window.cronitor (no inline snippet).
-        exports.load('YOUR_CLIENT_KEY', {
+        module.exports.load('YOUR_CLIENT_KEY', {
           trackMode: 'history',
           ingestionHost: 'http://localhost:8888',
           debug: true,
