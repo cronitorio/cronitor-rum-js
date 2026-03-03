@@ -88,6 +88,28 @@ test('core web vitals - records first input delay', async ({ page, browserName }
   expect(typeof request.postDataJSON().web_vital_fid === 'number').toBe(true);
 });
 
+test('npm import with history mode - no crash on load', async ({ page }) => {
+  const requestListener = page.waitForRequest((req) => req.url().indexOf('/api/rum/events') > -1, {
+    timeout: 5000,
+  });
+
+  // This page uses the NPM bundle (index.js) directly without pre-initializing
+  // window.cronitor, which previously caused "window.cronitor is undefined" (issue #3)
+  await page.goto('/npm-history-mode.html', { waitUntil: 'load' });
+
+  await expect(page).toHaveTitle('Cronitor RUM Test');
+
+  // Verify cronitor initialized correctly
+  let result = await page.evaluate(() => typeof window.cronitor === 'function');
+  expect(result).toBe(true);
+
+  // Verify the initial pageview was sent (history mode triggers one)
+  const request = await requestListener;
+  expect(request.method()).toBe('POST');
+  expect(request.postDataJSON().client_key).toBe('YOUR_CLIENT_KEY');
+  expect(request.postDataJSON().event_name).toBe('Pageview');
+});
+
 test('error tracking - listens for uncaught errors', async ({ page, browserName }) => {
   const requestListener = page.waitForRequest(
     (req) => {
