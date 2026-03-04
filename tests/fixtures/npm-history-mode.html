@@ -2,13 +2,12 @@
 <html>
   <head>
     <title>Cronitor RUM Test</title>
-    <!-- Shim for CommonJS module in browser -->
-    <script>var exports = {}; var module = { exports: exports };</script>
-    <script src="http://localhost:8888/index.js"></script>
+    <!-- Browser-compatible IIFE bundle of the NPM module (bundles web-vitals inline) -->
+    <script src="http://localhost:8888/index.browser.js"></script>
     <script>
         // This mirrors the reported issue (#3): calling load() with trackMode: "history"
         // without pre-initializing window.cronitor (no inline snippet).
-        module.exports.load('YOUR_CLIENT_KEY', {
+        CronitorRUM.load('YOUR_CLIENT_KEY', {
           trackMode: 'history',
           ingestionHost: 'http://localhost:8888',
           debug: true,

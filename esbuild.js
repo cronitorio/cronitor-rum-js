@@ -24,6 +24,27 @@ esbuild
   .then((res) => console.log(esbuild.analyzeMetafileSync(res.metafile)))
   .catch(() => process.exit(1));
 
+// Build browser-compatible IIFE bundle (for testing NPM import path in a real browser)
+esbuild
+  .build({
+    platform: 'browser',
+    entryPoints: {
+      'index.browser': 'src/index.ts',
+    },
+    outdir: 'dist',
+    bundle: true,
+    treeShaking: true,
+    minify: true,
+    sourcemap: false,
+    color: true,
+    format: 'iife',
+    globalName: 'CronitorRUM',
+    target: resolveToEsbuildTarget(browserslist('> 0.25% and not dead'), {
+      printUnknownTargets: false,
+    }),
+  })
+  .catch(() => process.exit(1));
+
 // Build NPM module target
 esbuild
   .build({
